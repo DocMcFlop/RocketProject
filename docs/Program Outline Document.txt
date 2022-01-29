@@ -1,0 +1,28 @@
+Overall program goals:
+
+Evaluate propellant properties given a range of MR and P using NASA CEA
+Read NASA CEA output files and turn them into usable data
+Read user input file for engine parameters
+Create a gui for the program and allow either file input or user based gui input
+First order estimate vehicle parameters in(initial_mass, burn_time, mass_flux, thrust, drag_ceofficient) - out(apogee, time_to_apogee, rail_velocity)
+
+Program structure:
+
+- Tab 1: Main menu
+    - Inputs (LHS - tick boxes with manual input or file input - scrollbar with input boxes for manual input - if manual input have tick boxes for optional modules like material properties and heat transfer (if heat transfer and stress are selected then material properties is forced TRUE))
+        - Performance (thrust)
+        - Combustion properties (mixture_ratio, ratio_of_specific_heats, gas_constant, combustion_temperature, chamber_pressure)
+        - Geometry controls (contraction_ratio, chamber_contour (rounded or square default=round), nozzle_contour (cone or bell default=cone), half_angle (default=15deg))
+        - Ambient conditions (ambient_pressure, ambient_density, ambient_temperature -> Direct control or altitude-based model)
+        - Propellant properties (fuel_phase (liquid or gaseous), fuel_density, store common propellants ex: LOX, Jet-A, Ethanol, etc.)
+        - Material properties (optional) ()
+        - Heat transfer (optional - must have material properties TRUE) (cooling_method, viscosities, prandtl_numbers)
+        - Stress analysis (optional - must have material properties TRUE) ()
+    - Summary output (RHS - basic common properties calculated)
+        - (fuel_mass_flow, oxidizer_mass_flow, mixture_ratio, chamber_diameter, throat_diameter, nozzle_diameter)
+- Tab 2: Performance outputs
+	- (specific_impulse_sea_level, specific_impulse_vacuum, mass_flux, )
+- Tab 3: Performance plots
+        - Isentropic flow (mach,pressure,temperature,density vs axial_position)
+- Tab 4: Geometry plots
+        - Engine contour (plotted vertically up and down)
