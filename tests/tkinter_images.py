@@ -6,8 +6,6 @@ from ttkthemes import ThemedStyle
 root = Tk()
 root.title('RocketGen')
 root.iconbitmap('icon.ico')
-style = ThemedStyle(root)
-style.set_theme("scidgrey")
 my_img = ImageTk.PhotoImage(Image.open("RocketGenBanner.png"))
 
 # Notebooks
@@ -22,6 +20,7 @@ my_frame4 = Frame(my_notebook, width=1080, height=720)
 my_frame5 = Frame(my_notebook, width=1080, height=720)
 my_frame6 = Frame(my_notebook, width=1080, height=720)
 my_frame7 = Frame(my_notebook, width=1080, height=720)
+my_frame8 = Frame(my_notebook, width=1080, height=720)
 
 # Pack widgets
 program_banner.grid(row=0, column=0)
@@ -33,6 +32,7 @@ my_frame4.pack(fill="both", expand=1)
 my_frame5.pack(fill="both", expand=1)
 my_frame6.pack(fill="both", expand=1)
 my_frame7.pack(fill="both", expand=1)
+my_frame8.pack(fill="both", expand=1)
 
 # Add frames to notebook as tabs
 my_notebook.add(my_frame1, text="Inputs")
@@ -42,6 +42,7 @@ my_notebook.add(my_frame4, text="Geometry")
 my_notebook.add(my_frame5, text="Injector")
 my_notebook.add(my_frame6, text="Heat Transfer")
 my_notebook.add(my_frame7, text="Stress Analysis")
+my_notebook.add(my_frame8, text="CEA Evaluation")
 
 
 
