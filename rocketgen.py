@@ -1,7 +1,8 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, filedialog
 from PIL import ImageTk, Image
 from ttkthemes import ThemedStyle
+import os
 
 root = Tk()
 root.title('RocketGen')
@@ -11,6 +12,20 @@ root.tk.call('lappend', 'auto_path', 'awthemes-10.4.0')
 root.tk.call('package', 'require', 'awdark')
 style.theme_use('awdark')
 my_img = ImageTk.PhotoImage(Image.open("RocketGenBanner.png"))
+
+
+
+def select_file():
+
+	# Get current working directory (cwd)
+	cwd = os.getcwd()
+
+	# Open a file dialog and store the selected filename in root.filename
+	root.filename = filedialog.askopenfilename(initialdir=cwd+"/inputs", title="Select a file", filetypes=((".csv files", "*.csv"),("all files","*.*")))
+
+	fileinput_entry.insert(0, root.filename)
+
+	print(root.filename)
 
 # Notebooks
 my_notebook = ttk.Notebook(root)
@@ -25,6 +40,10 @@ my_frame5 = ttk.Frame(my_notebook, width=1080, height=720)
 my_frame6 = ttk.Frame(my_notebook, width=1080, height=720)
 my_frame7 = ttk.Frame(my_notebook, width=1080, height=720)
 my_frame8 = ttk.Frame(my_notebook, width=1080, height=720)
+# Buttons
+selectfile_button = ttk.Button(my_frame1, text="Select File", command=select_file)
+#importfile_button = ttk.Button(my_frame1, text="Select File", command=select_file)
+fileinput_entry = ttk.Entry(my_frame1, width=75)
 
 # Pack widgets
 program_banner.grid(row=0, column=0)
@@ -37,6 +56,8 @@ my_frame5.pack(fill="both", expand=1)
 my_frame6.pack(fill="both", expand=1)
 my_frame7.pack(fill="both", expand=1)
 my_frame8.pack(fill="both", expand=1)
+fileinput_entry.grid(row=0, column=0)
+selectfile_button.grid(row=0, column=1)
 
 # Add frames to notebook as tabs
 my_notebook.add(my_frame1, text="Inputs")

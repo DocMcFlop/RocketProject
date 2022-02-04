@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk,Image
 from tkinter import filedialog
+import os
 
 root = Tk()
 root.title('Window Example')
@@ -9,7 +10,9 @@ root.iconbitmap('icon.ico')
 
 def open():
 	global my_image
-	root.filename = filedialog.askopenfilename(initialdir="/tests", title="Select a file", filetypes=(("png files", "*.png"), ("all files", "*.*")))
+	cwd = os.getcwd()
+	print(cwd)
+	root.filename = filedialog.askopenfilename(initialdir=cwd+"/images", title="Select a file", filetypes=(("png files", "*.png"), ("all files", "*.*")))
 	my_label = Label(root, text=root.filename).pack()
 	my_image = ImageTk.PhotoImage(Image.open(root.filename))
 	my_image_label = Label(image=my_image).pack()
