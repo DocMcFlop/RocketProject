@@ -123,9 +123,12 @@ middleinput_frame = ttk.Frame(input_frame, padding=2)
 rightinput_frame = ttk.Frame(input_frame, padding=2)
 units_frame = ttk.Frame(my_frame1, width=200, height=200, borderwidth=5, relief="groove")
 unitslabel_frame = ttk.Frame(units_frame, borderwidth=5, relief="groove")
+designparameters_frame = ttk.Frame(my_frame1, width=200, height=200, borderwidth=5, relief="groove")
+designparameterslabel_frame = ttk.Frame(designparameters_frame, borderwidth=5, relief="groove")
 # Labels
 banner_label = ttk.Label(root, image=banner_img)
 unitsframe_label = ttk.Label(unitslabel_frame, text="Units")
+designparametersframe_label = ttk.Label(designparameterslabel_frame, text="Design Parameters")
 length_label = ttk.Label(units_frame, text="Length: ")
 area_label = ttk.Label(units_frame, text="Area: ")
 volume_label = ttk.Label(units_frame, text="Volume: ")
@@ -135,13 +138,15 @@ temperature_label = ttk.Label(units_frame, text="Temperature: ")
 force_label = ttk.Label(units_frame, text="Force: ")
 energy_label = ttk.Label(units_frame, text="Energy: ")
 power_label = ttk.Label(units_frame, text="Power: ")
-# Checkbuttons
+thrustinput_label = ttk.Label(designparameters_frame, text="Thrust: ")
+thrustinputunits_label = ttk.Label(designparameters_frame, text="[N]")
 # Buttons
 selectfile_button = ttk.Button(leftinput_frame, text="Select File", command=select_file)
 importfile_button = ttk.Button(leftinput_frame, text="Import", command=import_file)
 run_button = ttk.Button(rightinput_frame, text="RUN", command=run)
 # Entries
 fileinput_entry = ttk.Entry(leftinput_frame, width=50)
+thrustinput_entry = ttk.Entry(designparameters_frame, width=25)
 # Optionmenus
 defaultunits_optionmenu = ttk.OptionMenu(units_frame, defaultunits_selection, default_units[0], *default_units)
 length_optionmenu = ttk.OptionMenu(units_frame, length_selection, length_units[0], *length_units)
@@ -211,6 +216,13 @@ energy_label.grid(row=9, column=0)
 energy_optionmenu.grid(row=9, column=1)
 power_label.grid(row=10, column=0)
 power_optionmenu.grid(row=10, column=1)
+# Design parameters frame
+designparameters_frame.pack(side=RIGHT)
+designparameterslabel_frame.grid(row=0, column=0, columnspan=3)
+designparametersframe_label.pack(fill="x", expand=1)
+thrustinput_label.grid(row=1, column=0)
+thrustinput_entry.grid(row=1, column=1)
+thrustinputunits_label.grid(row=1, column=2)
 
 # Add frames to notebook as tabs
 my_notebook.add(my_frame1, text="Inputs")
